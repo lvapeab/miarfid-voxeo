@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://www.w3.org/2001/06/grammar" xml:lang="es-es" root="ROOT" mode="voice">
+  <rule id="ROOT" scope="public">
+    <item repeat="0-1"> "Sí" </item>
+   <one-of>
+    <item> "Busca" </item>
+    <item> "Búscame" </item>
+    <item> "Quiero oír" </item>
+    <item> "Quiero escuchar" </item>
+    <item> "Dime" </item>
+    <item> "Cuéntame" </item>
+  </one-of>
+  <one-of>
+    <item>
+      <tag>out.MODE="readLast"</tag>
+      <ruleref uri="#LAST_POST"/>
+    </item>
+    <item>
+      <tag>out.MODE="readTwo"</tag>
+      <ruleref uri="#LAST_TWO_POSTS"/>
+    </item> 
+    <item>
+      <tag>out.MODE="readAll"</tag> 
+      <ruleref uri="#ALL_POSTS"/>     
+    </item>
+  </one-of>
+   <tag>
+    out.ACTION="read";
+    out.PAGE=rules.PAGE.PAGE;
+   </tag>
+</rule>
+
+<rule id="LAST_POST">
+  <one-of>
+    <item> "el último" </item>
+    <item> "la última" </item>
+    <item> "lo último" </item>
+    <item> "un" </item>
+    <item> "una" </item>
+  </one-of>
+  <item><ruleref uri="#OBJECT"/></item>
+</rule>
+
+<rule id="LAST_TWO_POSTS">
+  <one-of>
+    <item> "los dos últimos" </item>
+    <item> "las últimas dos" </item>
+    <item> "la dos últimas" </item>
+    <item> "dos" </item>
+  </one-of>
+  <item><ruleref uri="#OBJECTS"/></item>
+</rule>
+
+<rule id="ALL_POSTS">
+  <one-of>
+    <item> "los" </item>
+    <item> "las" </item>
+    <item> "las últimas" </item>
+    <item> "los últimos" </item>
+    <item> "todos los" </item>
+    <item> "todas  las" </item>
+    <item> "todo lo" </item>
+  </one-of>
+ <item><ruleref uri="#OBJECTS"/></item>
+</rule>
+
+<rule id="OBJECT">
+  <one-of>
+    <item> "mensaje"</item>
+    <item> "post" </item>
+    <item> "actualización" </item>
+    <item> "estado" </item>
+    <item> "anuncio" </item>
+    <item> "publicación" </item>
+    <item> "publicado" </item>
+    <item> "dicho" </item>
+    <item> "puesto" </item>
+    <item> "noticia" </item>
+  </one-of>
+  <one-of>
+   <item> "de" </item>
+   <item> "por" </item>
+ </one-of>
+  <item><ruleref uri="#PAGE"/></item>
+</rule>
+
+
+<rule id="OBJECTS">
+  <one-of>
+    <item> "mensajes"</item>
+    <item> "posts" </item>
+    <item> "actualizaciones" </item>
+    <item> "estados" </item>
+    <item> "anuncios" </item>
+    <item> "publicaciones" </item>
+    <item> "publicado" </item>
+    <item> "dicho" </item>
+    <item> "puesto" </item>
+    <item> "noticias" </item>
+  </one-of>
+  <one-of>
+   <item> "de" </item>
+   <item> "por" </item>
+ </one-of>
+  <item><ruleref uri="#PAGE"/></item>
+</rule>
+
+
+<rule id="PAGE">
+  <one-of>
+    <item> "ACB punto COM" <tag>out.PAGE="ACBCOM"</tag> </item>
+    <item> " el País " <tag>out.PAGE="elpais"</tag> </item>
+    <item> " Público " <tag>out.PAGE="diario.publico"</tag> </item>
+    <item> " la Sexta " <tag>out.PAGE="laSexta"</tag> </item>
+    <item> " Iñaki Gabilondo " <tag>out.PAGE="lavozdeinakienelpais"</tag> </item>
+  </one-of>
+</rule>
+</grammar>

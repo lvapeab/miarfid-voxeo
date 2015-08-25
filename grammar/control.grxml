@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://www.w3.org/2001/06/grammar" xml:lang="es-ES" root="ROOT" mode="voice">
+  <rule id="ROOT" scope="public">
+    <one-of>
+      <item><ruleref uri="#STOP"/></item>
+      <item><ruleref uri="#EXIT"/></item>
+      <item><ruleref uri="#REPEAT"/></item>
+    </one-of>
+  </rule>
+
+  
+  <rule id="STOP">
+    <item repeat="0-1"> "Quiero" </item>
+    <one-of>
+      <item> para </item>
+      <item> parar </item>
+      <item> calla </item>
+      <item> stop </item>
+      <item> cállate </item>
+      <item> que pares </item>
+      <item> que calles</item>
+      <item> que te calles </item>
+    </one-of>
+    <tag>out.ACTION="stop";</tag>
+  </rule>
+
+
+  <rule id="EXIT">
+    <item repeat="0-1"> "Quiero" </item>
+    <one-of>
+      <item> no </item>
+      <item> salir </item>
+      <item> fin </item>
+      <item> finalizar </item>
+      <item> adiós </item>
+      <item> hasta luego </item>
+      <item> acabar </item>
+    </one-of>
+    <tag>out.ACTION="exit";</tag>
+  </rule>
+
+
+  <rule id="REPEAT">
+    <item repeat="0-1"> "Quiero" </item>
+    <item repeat="0-1"> "Sí" </item>
+    <one-of>
+      <item> que lo repitas </item>
+      <item> repítelo </item>
+      <item> volver a escuchar </item>
+      <item> volver a escucharlo </item>
+      <item> que lo digas otra vez </item>
+      <item> que me lo repitas </item>
+      <item> volver a oír</item>
+      <item> repítemelo </item>
+    </one-of>
+
+    <item repeat="0-1">
+      <one-of>
+        <item> "el mensaje"</item>
+        <item> "el post" </item>
+        <item> "la actualización" </item>
+        <item> "el estado" </item>
+        <item> "el anuncio" </item>
+        <item> "la publicación" </item>
+        <item> "lo publicado" </item>
+      </one-of>
+    </item>
+
+    <tag>out.ACTION="repeat";</tag>
+  </rule>
+
+</grammar>
