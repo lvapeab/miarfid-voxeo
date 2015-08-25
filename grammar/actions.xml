@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://www.w3.org/2001/06/grammar" xml:lang="es-es" root="ROOT" mode="voice">
+  <rule id="ROOT" scope="public">
+    <one-of> <!--Retocar esto-->
+      <item>
+        <ruleref uri="#READ_AGAIN"/>
+        <tag>out.ACTION="READ_AGAIN";</tag>
+      </item>
+      
+      <item>
+        <ruleref uri="#READ_BY_PAGE"/>
+        <tag>out.ACTION="READ";</tag>
+      </item>
+      
+      
+    </one-of>
+  </rule>
+
+  <rule id="READ_AGAIN">
+      <item repeat="0-1"> "Por favor, " </item>
+      <item repeat="0-1"> "Quiero" </item>
+    <one-of>
+      <item> "léemelo otra vez" </item>
+      <item> "vuelve a leerlo" </item>
+      <item> "escucharlo" </item>
+      <item> "escucharlo otra vez" </item>
+      <item> "escucharlo de nuevo" </item>
+    </one-of>
+  </rule>
+</grammar>

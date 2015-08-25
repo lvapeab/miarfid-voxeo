@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://www.w3.org/2001/06/grammar" xml:lang="es-es" root="ROOT" mode="voice">
+
+  <rule id="ROOT" scope="public">
+    <item repeat="0-1"></item>
+    <one-of>
+      <item> Busca </item>
+      <item> Búscame </item>
+      <item> Quiero oír </item>
+      <item> Quiero escuchar </item>
+    </one-of>
+    <one-of>
+
+    <one-of>
+      <item>
+        <ruleref uri="#SEARCH_BY_PAGE"/>
+        <tag>out.SEARCH="read"
+        </tag>
+      </item>
+      <item>
+        <ruleref uri="#SEARCH_DAY_EVENTS"/>
+        <tag>
+          out.SEARCH="day";
+          out.DATE=rules.SEARCH_DAY_EVENT.DATE;
+        </tag>
+      </item>
+    </one-of>
+    <tag>out.ACTION="read";</tag>
+  </rule>
+
+
+  <rule id="SEARCH_ALL_POSTS">
+    <one-of>
+      <item> "todos los posts de" </item>
+      <item> "todo" </item>
+      <item> "todos los eventos" </item>
+      <item> "todas las citas" </item>
+      <item> "todas los compromisos" </item>
+    </one-of>
+  </rule>
+
+  <rule id="BY_PAGE">
+    <one-of>
+      <item> "las actualizaciones" </item>
+      <item> "los posts" </item>
+      <item> "los estados" </item>
+      <item> "los anuncios" </item>
+      <item> "la página" </item>
+    </one-of>
+    <one-of>
+      <item> "de ACBpuntoCOM" <tag>out.PAGE="ACBCOM"</tag></item>
+      <item> "de Word Press" <tag>out.PAGE="WordPress"</tag></item>
+      <item> "de la U P V" <tag>out.PAGE="UPV"</tag></item>
+      <item> "de El País" <tag>out.PAGE="elpais"</tag></item>
+      <item> "de El Mundo Tudey" <tag>out.PAGE="elmundotoday"</tag></item>     
+    </one-of>
+  </rule>
+</grammar>

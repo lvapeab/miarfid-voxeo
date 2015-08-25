@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://www.w3.org/2001/06/grammar" xml:lang="es-es" root="ROOT" mode="voice">
+  <rule id="ROOT" scope="public">
+    <one-of>
+      <item><ruleref uri="#STOP"/></item>
+      <item><ruleref uri="#EXIT"/></item>
+    </one-of>
+  </rule>
+  <rule id="STOP">
+    <one-of>
+      <item> para </item>
+      <item> parar </item>
+      <item> calla </item>
+      <item> stop </item>
+      <item> cállate </item>
+    </one-of>
+    <tag>out.ACTION="stop";</tag>
+  </rule>
+  <rule id="EXIT">
+    <one-of>
+      <item> salir </item>
+      <item> fin </item>
+      <item> finalizar </item>
+      <item> adiós </item>
+      <item> "hasta luego" </item>
+      <item> acabar </item>
+    </one-of>
+    <tag>out.ACTION="exit";</tag>
+  </rule>
+</grammar>
